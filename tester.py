@@ -4,9 +4,10 @@ from vendor import Vendor
 from time import sleep
 
 c = Customer()
-resp = c.get("send_history")
-
 v = Vendor()
 sleep(1)
 s = Store()
-s.make_purchase(*resp, [("apples",1)])
+
+msg, sig = c.get("public_key")
+s.register_loyalty_card(msg, sig)
+# s.make_purchase(*resp, [("apples",1)])

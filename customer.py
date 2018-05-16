@@ -35,8 +35,7 @@ class Customer:
         elif key == "spend_num_points":
             x = input("how many points do you wish to spend on this purchase? ")
             return self.generate_message("spend_num_points", str(int(x)))
-        elif key =="public_key":
-            return self.generate_message("public_key", self.public_key)
+        elif key == "public_key":
+            return self.generate_message("public_key", self.public_key.exportKey().decode('utf-8'))
         else:
             return self.generate_message()
-

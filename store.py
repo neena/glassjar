@@ -49,7 +49,7 @@ class Store:
             price += rnd.triangular(-k,0,k)
             price = max(0, price) # no negative points
 
-        M = {"m":message,"s":signature, "history":purchase_history, "price": price, "action":"make_purchase"}
+        M = {"m":message,"s":signature, "history":purchase_history, "action":"make_purchase"}
         self.encrypt_sign_send(M)
 
     def check_balance(self, message, signature):
@@ -65,7 +65,7 @@ class Store:
         self.encrypt_sign_send(M)
 
     def encrypt_sign_send(self, m):
-        print(m)
+        # print(m)
         m["store_id"] = self.id
         m = json.dumps(m)
         enc = self.encrypt(m)

@@ -3,9 +3,20 @@ Store	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from store import 
 Vendor	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from vendor import Vendor$/;"	namespace	line:3
 sleep	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from time import sleep$/;"	namespace	line:4
 c	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^c = Customer()$/;"	variable	line:6
-resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("send_history")$/;"	variable	line:7
-v	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^v = Vendor()$/;"	variable	line:9
-s	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^s = Store()$/;"	variable	line:11
+v	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^v = Vendor()$/;"	variable	line:7
+s	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^s = Store()$/;"	variable	line:9
+secrets	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^import secrets$/;"	namespace	line:1
+SHA256	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from Crypto.Hash import SHA256$/;"	namespace	line:2
+RSA	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from Crypto.PublicKey import RSA$/;"	namespace	line:3
+Random	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from Crypto import Random$/;"	namespace	line:4
+json	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^import json$/;"	namespace	line:5
+datetime	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from datetime import datetime$/;"	namespace	line:6
+Customer	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^class Customer:$/;"	class	line:9
+__init__	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^    def __init__(self):$/;"	member	line:10	class:Customer
+__str__	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^    def __str__(self):$/;"	member	line:15	class:Customer	file:
+generate_message	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^    def generate_message(self, key="", text=""):$/;"	member	line:18	class:Customer
+verify_message	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^    def verify_message(self, message, signature):$/;"	member	line:25	class:Customer
+get	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^    def get(self, key=""):$/;"	member	line:31	class:Customer
 secrets	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import secrets$/;"	namespace	line:1
 numpy	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import numpy.random as rnd$/;"	namespace	line:2
 rnd	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import numpy.random as rnd$/;"	namespace	line:2
@@ -49,21 +60,24 @@ SHA256	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.Hash 
 secrets	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import secrets$/;"	namespace	line:12
 numpy	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import numpy.random as rnd$/;"	namespace	line:13
 rnd	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import numpy.random as rnd$/;"	namespace	line:13
-TCP_IP	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_IP = 'localhost'$/;"	variable	line:16
-TCP_PORT	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_PORT = 19997$/;"	variable	line:17
-BUFFER_SIZE	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^BUFFER_SIZE = 8192$/;"	variable	line:18
-dollar_to_points	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points = 10$/;"	variable	line:21
-dollar_to_points_no_history	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points_no_history = 5$/;"	variable	line:22
-Vendor	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^class Vendor:$/;"	class	line:24
-__init__	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def __init__(self):$/;"	member	line:25	class:Vendor
-listen_on_soc	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def listen_on_soc(self):$/;"	member	line:41	class:Vendor
-connection_handler	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def connection_handler(self, conn):$/;"	member	line:49	class:Vendor
-handle_make_purchase	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def handle_make_purchase(self, message, signature):$/;"	member	line:56	class:Vendor
-handle_check_balance	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def handle_check_balance(self, message, signature):$/;"	member	line:64	class:Vendor
-handle_register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def handle_register_loyalty_card(self, message, signature):$/;"	member	line:72	class:Vendor
-handle_spend_points	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def handle_spend_points(self, message, signature):$/;"	member	line:77	class:Vendor
-encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def encrypt_sign_send(self, m):$/;"	member	line:88	class:Vendor
-sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def sign(self, message):$/;"	member	line:100	class:Vendor
-verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def verify_signature(self, message, signature):$/;"	member	line:107	class:Vendor
-encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def encrypt(self,m):$/;"	member	line:113	class:Vendor
-decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^    def decrypt(self,enc):$/;"	member	line:120	class:Vendor
+datetime	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from datetime import datetime$/;"	namespace	line:14
+CustomerData	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from customerdata import CustomerData$/;"	namespace	line:15
+TCP_IP	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_IP = 'localhost'$/;"	variable	line:18
+TCP_PORT	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_PORT = 19997$/;"	variable	line:19
+BUFFER_SIZE	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^BUFFER_SIZE = 8192$/;"	variable	line:20
+BS	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^BS = 16$/;"	variable	line:22
+pad	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)$/;"	variable	line:23
+unpad	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^unpad = lambda s : s[0:-s[-1]]$/;"	variable	line:24
+dollar_to_points	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points = 10$/;"	variable	line:27
+dollar_to_points_no_history	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points_no_history = 5$/;"	variable	line:28
+Vendor	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^class Vendor:$/;"	class	line:30
+__init__	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def __init__(self):$/;"	member	line:31	class:Vendor
+listen_on_soc	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def listen_on_soc(self):$/;"	member	line:47	class:Vendor
+connection_handler	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def connection_handler(self, conn):$/;"	member	line:55	class:Vendor
+handle_make_purchase	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_make_purchase(self, loyalty_number, price, history):$/;"	member	line:85	class:Vendor
+handle_register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_register_loyalty_card(self, loyalty_number, pk):$/;"	member	line:100	class:Vendor
+encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt_sign_send(self, m):$/;"	member	line:115	class:Vendor
+sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def sign(self, message):$/;"	member	line:127	class:Vendor
+verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def verify_signature(self, message, signature, public_key):$/;"	member	line:134	class:Vendor
+encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(self,m):$/;"	member	line:140	class:Vendor
+decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:147	class:Vendor
