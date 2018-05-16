@@ -7,11 +7,16 @@ from Crypto import Random
 from Crypto.Cipher import AES
 import base64
 from Crypto.Hash import SHA256
+import socket
 
 
 BS = 16
 pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)
 unpad = lambda s : s[0:-s[-1]]
+
+TCP_IP = 'localhost'
+TCP_PORT = 19997
+BUFFER_SIZE = 8192
 
 class Store:
     def __init__(self):
@@ -19,6 +24,11 @@ class Store:
         self.private_key = RSA.generate(1024)
         self.public_key = self.private_key.publickey()
         self.store_key = SHA256.new("mysecretpassword".encode('utf-8')).digest() #TODO generate session keys
+        print('time to connect...')
+
+        self.vendor_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.vendor_sock.connect((TCP_IP, TCP_PORT))
+        print('connection...', (TCP_IP, TCP_PORT))
 
     def make_purchase(self, message, signature, purchases): # purchases is a list of tuples ("item", price in dollars)
         send_purchases = False
@@ -55,16 +65,25 @@ class Store:
         self.encrypt_sign_send(M)
 
     def encrypt_sign_send(self, m):
+        print(m)
         m["store_id"] = self.id
         m = json.dumps(m)
         enc = self.encrypt(m)
         sig = self.sign(enc)
-        #TODO send
-
         # check everything is ok
         # TODO remove these before we release
         assert(self.decrypt(enc)==m.encode('utf-8'))
         assert(self.verify_signature(enc,sig))
+
+        data = json.dumps((enc.decode('utf-8'), sig))
+        resp = self.send_and_recieve(data.encode('utf-8'))
+
+        print(resp)
+
+    def send_and_recieve(self, m):
+        self.vendor_sock.send(m)
+        data = self.vendor_sock.recv(BUFFER_SIZE)
+        return data
 
     def sign(self, message):
         if isinstance(message, str):
