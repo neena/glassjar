@@ -10,4 +10,9 @@ s = Store()
 
 msg, sig = c.get("public_key")
 s.register_loyalty_card(msg, sig)
-# s.make_purchase(*resp, [("apples",1)])
+
+resp = c.get("send_history")
+s.make_purchase(*resp, [("apples",1)])
+
+resp = c.get("")
+s.check_balance(*resp)

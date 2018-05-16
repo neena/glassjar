@@ -1,6 +1,6 @@
 import socket
 import asyncore
-from multiprocessing import Process
+from threading import Thread
 import atexit
 import json
 from Crypto.PublicKey import RSA
@@ -39,7 +39,7 @@ class Vendor:
 		self.soc.bind((TCP_IP, TCP_PORT))
 		self.soc.listen()
 
-		p = Process(target=self.listen_on_soc)
+		p = Thread(target=self.listen_on_soc)
 
 		p.start()
 
@@ -48,7 +48,7 @@ class Vendor:
 		while True:
 			conn, addr = self.soc.accept()
 			print('Connection address:', addr)
-			p = Process(target=self.connection_handler,args=(conn,))
+			p = Thread(target=self.connection_handler,args=(conn,))
 			p.start()
 
 
@@ -66,11 +66,13 @@ class Vendor:
 		customer_sig = json_obj["s"]
 		customer_json = json.loads(json_obj["m"])
 
+		data = "NO"
+
 
 		if int(datetime.utcnow().timestamp()) - customer_json["timestamp"] > 30:
 			conn.close()
 			return
-
+		print(action)
 		if action != "register_loyalty_card":
 			customer = self.customers[customer_json["loyalty_number"]]
 			if not self.verify_signature(customer_m, customer_sig, customer.public_key):
@@ -78,28 +80,32 @@ class Vendor:
 
 		if action == "register_loyalty_card":
 			data = self.handle_register_loyalty_card(customer_json["loyalty_number"], customer_json["public_key"])
+		elif action == "make_purchase":
+			data = self.handle_make_purchase(customer, json_obj["price"], json_obj["history"])
+		elif action == "check_balance":
+			data = self.handle_check_balance(customer)
 
 		conn.send(data)
 		conn.close()
 	#
-	def handle_make_purchase(self, loyalty_number, price, history):
-		points = lambda x: price*dollar_to_points_no_history if msg["history"] == [] else price*dollar_to_points
-		customers[customer_loyalty_number].points += points
-		# TODO add history to customers
+	def handle_make_purchase(self, customer, price, history):
+		if history == []:
+			points = price*dollar_to_points_no_history
+		else:
+			points = price*dollar_to_points
+		customer.points += points
+		customer.purchases += history
+		print(customer.purchases)
+		# print("you got points!! ", customer.points)
 
 		return b"OK"
 	#
-	# def handle_check_balance(self, message, signature):
-	#     if verify_signature(message, signature):
-	#         msg = decrypt(message)
-	#         customer_loyalty_number = msg["loyalty_number"]
-	#         balance = customers[customer_loyalty_number].points
-	#         #TODO: make the message
-	#         self.encrypt_sign_send(M)
-	#
+	def handle_check_balance(self, customer):
+	    return self.encrypt(str(customer.points))
+
 	def handle_register_loyalty_card(self, loyalty_number, pk):
 		rsakey = RSA.importKey(pk.encode('utf-8'))
-		self.customers[loyalty_number] = CustomerData(rsakey)
+		self.customers[loyalty_number] = CustomerData(rsakey, loyalty_number)
 		return b"OK"
 	#
 	# def handle_spend_points(self, message, signature):

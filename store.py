@@ -24,11 +24,11 @@ class Store:
         self.private_key = RSA.generate(1024)
         self.public_key = self.private_key.publickey()
         self.store_key = SHA256.new("mysecretpassword".encode('utf-8')).digest() #TODO generate session keys
-        print('time to connect...')
+        # self.connect_to_vendor()
 
+    def connect_to_vendor(self):
         self.vendor_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.vendor_sock.connect((TCP_IP, TCP_PORT))
-        print('connection...', (TCP_IP, TCP_PORT))
 
     def make_purchase(self, message, signature, purchases): # purchases is a list of tuples ("item", price in dollars)
         send_purchases = False
@@ -49,36 +49,37 @@ class Store:
             price += rnd.triangular(-k,0,k)
             price = max(0, price) # no negative points
 
-        M = {"m":message,"s":signature, "history":purchase_history, "action":"make_purchase"}
-        self.encrypt_sign_send(M)
+        M = {"m":message,"s":signature, "history":purchase_history, "action":"make_purchase", "price": price}
+        resp = self.encrypt_sign_send(M)
+        print(resp)
 
     def check_balance(self, message, signature):
         M = {"m":message,"s":signature, "action":"check_balance"}
-        self.encrypt_sign_send(M)
+        resp = self.encrypt_sign_send(M)
+        print(self.decrypt(resp))
 
     def register_loyalty_card(self, message, signature):
         M = {"m":message,"s":signature, "action":"register_loyalty_card"}
-        self.encrypt_sign_send(M)
+        resp = self.encrypt_sign_send(M)
+        if resp == b"OK":
+            print("successfully registered!!")
 
     def spend_points(self, message, signature):
         M = {"m":message,"s":signature, "action":"spend_points"}
         self.encrypt_sign_send(M)
 
     def encrypt_sign_send(self, m):
-        # print(m)
         m["store_id"] = self.id
         m = json.dumps(m)
         enc = self.encrypt(m)
         sig = self.sign(enc)
-        # check everything is ok
-        # TODO remove these before we release
-        assert(self.decrypt(enc)==m.encode('utf-8'))
-        assert(self.verify_signature(enc,sig))
+
+        self.connect_to_vendor()
 
         data = json.dumps((enc.decode('utf-8'), sig))
         resp = self.send_and_recieve(data.encode('utf-8'))
 
-        print(resp)
+        return resp
 
     def send_and_recieve(self, m):
         self.vendor_sock.send(m)

@@ -6,7 +6,7 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 socket	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import socket$/;"	namespace	line:1
 asyncore	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import asyncore$/;"	namespace	line:2
-Process	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from multiprocessing import Process$/;"	namespace	line:3
+Thread	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from threading import Thread$/;"	namespace	line:3
 atexit	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import atexit$/;"	namespace	line:4
 json	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import json$/;"	namespace	line:5
 RSA	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.PublicKey import RSA$/;"	namespace	line:6
@@ -32,10 +32,11 @@ Vendor	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^class Vendor:$/;"
 __init__	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def __init__(self):$/;"	member	line:31	class:Vendor
 listen_on_soc	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def listen_on_soc(self):$/;"	member	line:47	class:Vendor
 connection_handler	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def connection_handler(self, conn):$/;"	member	line:55	class:Vendor
-handle_make_purchase	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_make_purchase(self, loyalty_number, price, history):$/;"	member	line:85	class:Vendor
-handle_register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_register_loyalty_card(self, loyalty_number, pk):$/;"	member	line:100	class:Vendor
-encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt_sign_send(self, m):$/;"	member	line:115	class:Vendor
-sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def sign(self, message):$/;"	member	line:127	class:Vendor
-verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def verify_signature(self, message, signature, public_key):$/;"	member	line:134	class:Vendor
-encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(self,m):$/;"	member	line:140	class:Vendor
-decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:147	class:Vendor
+handle_make_purchase	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_make_purchase(self, customer, price, history):$/;"	member	line:91	class:Vendor
+handle_check_balance	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_check_balance(self, customer):$/;"	member	line:103	class:Vendor
+handle_register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_register_loyalty_card(self, loyalty_number, pk):$/;"	member	line:106	class:Vendor
+encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt_sign_send(self, m):$/;"	member	line:121	class:Vendor
+sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def sign(self, message):$/;"	member	line:133	class:Vendor
+verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def verify_signature(self, message, signature, public_key):$/;"	member	line:140	class:Vendor
+encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(self,m):$/;"	member	line:146	class:Vendor
+decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:153	class:Vendor
