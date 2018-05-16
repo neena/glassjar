@@ -2,7 +2,7 @@ from customer import Customer
 from store import Store
 
 c = Customer()
-m, sig = c.generate_message("send_history","y")
+resp = c.get("send_history")
 
 s = Store()
-s.make_purchase(m, sig, [("apples",1)])
+s.make_purchase(*resp, [("apples",1)])

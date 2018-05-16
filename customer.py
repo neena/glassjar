@@ -18,8 +18,7 @@ class Customer:
     def generate_message(self, key="", text=""):
         timestamp = int(datetime.utcnow().timestamp())
         message = json.dumps({key: text, "timestamp": timestamp, "loyalty_number": self.loyalty_number})
-        message = message.encode('utf-8')
-        hash = SHA256.new(message).digest()
+        hash = SHA256.new(message.encode('utf-8')).digest()
         signature = self.private_key.sign(hash, '')
         return (message, signature)
 
@@ -28,3 +27,13 @@ class Customer:
             message = message.encode('utf-8')
         hash = SHA256.new(message).digest()
         return self.public_key.verify(hash, signature)
+
+    def get(self, key=""):
+        if key == "send_history":
+            x = input("do you wish to send your purchase history? ")
+            return self.generate_message("send_history", x[0])
+        elif key == "spend_num_points":
+            x = input("how many points do you wish to spend on this purchase? ")
+            return self.generate_message("spend_num_points", str(int(x)))
+        else:
+            return self.generate_message()
