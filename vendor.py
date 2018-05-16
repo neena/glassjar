@@ -110,7 +110,11 @@ class Vendor:
 		else:
 			points = price*dollar_to_points
 		customer.points += points
-		customer.purchases += history
+		for item, cost in history:
+			if item in customer.purchases:
+				customer.purchases[item] += 1
+			else:
+				customer.purchases[item] = 1
 		print(customer.purchases)
 		# print("you got points!! ", customer.points)
 
@@ -159,3 +163,34 @@ class Vendor:
 		iv = enc[:16]
 		cipher = AES.new(self.store_key, AES.MODE_CBC, iv )
 		return unpad(cipher.decrypt( enc[16:] ))
+
+	def make_results_differentially_private(self, results, epsilon=2):
+		dp_results = []
+		la = len(results)/(len(self.customers)*epsilon)
+		for result in results:
+			dp_results.append(result + rnd.laplace(0, la))
+		return dp_results
+
+	def get_dp_counting_queries(self, queries):
+	# list of queries. queries are lists
+	# eg. ["OR", x, y] => customers who bought x or y
+	# eg. ["AND", a, b, c] => customers who bought a and b and c
+		results = [0]*len(queries)
+		for customer in self.customers:
+			for i in range(0,len(queries)):
+				query = queries[i]
+				if query[0] == "OR":
+					for item in query[1:]:
+						if item in customer.purchases:
+							results[i] += 1
+							break
+				elif query[0] == "AND":
+					results[i] += 1
+					for item in query[1:]:
+						if item not in customer.purchases:
+							results[i] -= 1
+							break
+		for i in range(0,len(queries)):
+			results[i] = results[i]/len(self.customers)
+
+		return self.make_results_differentially_private(results)
