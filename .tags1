@@ -4,39 +4,35 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-socket	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import socket$/;"	namespace	line:1
-asyncore	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import asyncore$/;"	namespace	line:2
-Thread	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from threading import Thread$/;"	namespace	line:3
-atexit	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import atexit$/;"	namespace	line:4
-json	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import json$/;"	namespace	line:5
-RSA	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.PublicKey import RSA$/;"	namespace	line:6
-PKCS1_OAEP	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.Cipher import PKCS1_OAEP$/;"	namespace	line:7
-Random	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto import Random$/;"	namespace	line:8
-AES	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.Cipher import AES$/;"	namespace	line:9
-base64	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import base64$/;"	namespace	line:10
-SHA256	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from Crypto.Hash import SHA256$/;"	namespace	line:11
-secrets	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import secrets$/;"	namespace	line:12
-numpy	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import numpy.random as rnd$/;"	namespace	line:13
-rnd	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^import numpy.random as rnd$/;"	namespace	line:13
-datetime	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from datetime import datetime$/;"	namespace	line:14
-CustomerData	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^from customerdata import CustomerData$/;"	namespace	line:15
-TCP_IP	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_IP = 'localhost'$/;"	variable	line:18
-TCP_PORT	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^TCP_PORT = 19997$/;"	variable	line:19
-BUFFER_SIZE	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^BUFFER_SIZE = 8192$/;"	variable	line:20
-BS	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^BS = 16$/;"	variable	line:22
-pad	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)$/;"	variable	line:23
-unpad	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^unpad = lambda s : s[0:-s[-1]]$/;"	variable	line:24
-dollar_to_points	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points = 10$/;"	variable	line:27
-dollar_to_points_no_history	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^dollar_to_points_no_history = 5$/;"	variable	line:28
-Vendor	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^class Vendor:$/;"	class	line:30
-__init__	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def __init__(self):$/;"	member	line:31	class:Vendor
-listen_on_soc	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def listen_on_soc(self):$/;"	member	line:47	class:Vendor
-connection_handler	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def connection_handler(self, conn):$/;"	member	line:55	class:Vendor
-handle_make_purchase	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_make_purchase(self, customer, price, history):$/;"	member	line:91	class:Vendor
-handle_check_balance	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_check_balance(self, customer):$/;"	member	line:103	class:Vendor
-handle_register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def handle_register_loyalty_card(self, loyalty_number, pk):$/;"	member	line:106	class:Vendor
-encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt_sign_send(self, m):$/;"	member	line:121	class:Vendor
-sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def sign(self, message):$/;"	member	line:133	class:Vendor
-verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def verify_signature(self, message, signature, public_key):$/;"	member	line:140	class:Vendor
-encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(self,m):$/;"	member	line:146	class:Vendor
-decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:153	class:Vendor
+secrets	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import secrets$/;"	namespace	line:1
+numpy	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import numpy.random as rnd$/;"	namespace	line:2
+rnd	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import numpy.random as rnd$/;"	namespace	line:2
+json	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import json$/;"	namespace	line:3
+RSA	/Users/neena/Projects/classes/6857/glassjar/store.py	/^from Crypto.PublicKey import RSA$/;"	namespace	line:4
+PKCS1_OAEP	/Users/neena/Projects/classes/6857/glassjar/store.py	/^from Crypto.Cipher import PKCS1_OAEP$/;"	namespace	line:5
+Random	/Users/neena/Projects/classes/6857/glassjar/store.py	/^from Crypto import Random$/;"	namespace	line:6
+AES	/Users/neena/Projects/classes/6857/glassjar/store.py	/^from Crypto.Cipher import AES$/;"	namespace	line:7
+base64	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import base64$/;"	namespace	line:8
+SHA256	/Users/neena/Projects/classes/6857/glassjar/store.py	/^from Crypto.Hash import SHA256$/;"	namespace	line:9
+socket	/Users/neena/Projects/classes/6857/glassjar/store.py	/^import socket$/;"	namespace	line:10
+BS	/Users/neena/Projects/classes/6857/glassjar/store.py	/^BS = 16$/;"	variable	line:13
+pad	/Users/neena/Projects/classes/6857/glassjar/store.py	/^pad = lambda s: s + (BS - len(s) % BS) * chr(BS - len(s) % BS)$/;"	variable	line:14
+unpad	/Users/neena/Projects/classes/6857/glassjar/store.py	/^unpad = lambda s : s[0:-s[-1]]$/;"	variable	line:15
+TCP_IP	/Users/neena/Projects/classes/6857/glassjar/store.py	/^TCP_IP = 'localhost'$/;"	variable	line:17
+TCP_PORT	/Users/neena/Projects/classes/6857/glassjar/store.py	/^TCP_PORT = 19997$/;"	variable	line:18
+BUFFER_SIZE	/Users/neena/Projects/classes/6857/glassjar/store.py	/^BUFFER_SIZE = 8192$/;"	variable	line:19
+Store	/Users/neena/Projects/classes/6857/glassjar/store.py	/^class Store:$/;"	class	line:21
+__init__	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def __init__(self):$/;"	member	line:22	class:Store
+connect_to_vendor	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def connect_to_vendor(self):$/;"	member	line:30	class:Store
+store_register_with_vendor	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def store_register_with_vendor(self):$/;"	member	line:34	class:Store
+get_vendor_pub_key	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def get_vendor_pub_key(self):$/;"	member	line:42	class:Store
+make_purchase	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def make_purchase(self, message, signature, purchases): # purchases is a list of tuples ("item", price in dollars)$/;"	member	line:50	class:Store
+check_balance	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def check_balance(self, message, signature):$/;"	member	line:73	class:Store
+register_loyalty_card	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def register_loyalty_card(self, message, signature):$/;"	member	line:78	class:Store
+spend_points	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def spend_points(self, message, signature):$/;"	member	line:84	class:Store
+encrypt_sign_send	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def encrypt_sign_send(self, m):$/;"	member	line:93	class:Store
+send_and_recieve	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def send_and_recieve(self, m):$/;"	member	line:106	class:Store
+sign	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def sign(self, message):$/;"	member	line:111	class:Store
+verify_signature	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def verify_signature(self, message, signature, public_key):$/;"	member	line:118	class:Store
+encrypt	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def encrypt(self,m):$/;"	member	line:124	class:Store
+decrypt	/Users/neena/Projects/classes/6857/glassjar/store.py	/^    def decrypt(self,enc):$/;"	member	line:131	class:Store

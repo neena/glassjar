@@ -24,11 +24,28 @@ class Store:
         self.private_key = RSA.generate(1024)
         self.public_key = self.private_key.publickey()
         self.store_key = SHA256.new("mysecretpassword".encode('utf-8')).digest() #TODO generate session keys
-        # self.connect_to_vendor()
+        self.vendor_pk = RSA.generate(1024)
+        self.store_register_with_vendor()
 
     def connect_to_vendor(self):
         self.vendor_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.vendor_sock.connect((TCP_IP, TCP_PORT))
+
+    def store_register_with_vendor(self):
+        self.connect_to_vendor()
+        data = json.dumps({"action":"register_store","public_key": self.public_key.exportKey().decode('utf-8'), "store_id":self.id})
+        resp = self.send_and_recieve(data.encode('utf-8'))
+        self.store_key = self.private_key.decrypt(resp)
+
+        self.get_vendor_pub_key()
+
+    def get_vendor_pub_key(self):
+        self.connect_to_vendor()
+        data = json.dumps({"action":"get_public_key"})
+        resp = self.send_and_recieve(data.encode('utf-8'))
+        self.vendor_pk = RSA.importKey(resp)
+        print("vendor pk: ", self.vendor_pk)
+
 
     def make_purchase(self, message, signature, purchases): # purchases is a list of tuples ("item", price in dollars)
         send_purchases = False
@@ -48,7 +65,7 @@ class Store:
             purchase_history = []
             price += rnd.triangular(-k,0,k)
             price = max(0, price) # no negative points
-
+        print(price)
         M = {"m":message,"s":signature, "history":purchase_history, "action":"make_purchase", "price": price}
         resp = self.encrypt_sign_send(M)
         print(resp)
@@ -66,7 +83,12 @@ class Store:
 
     def spend_points(self, message, signature):
         M = {"m":message,"s":signature, "action":"spend_points"}
-        self.encrypt_sign_send(M)
+        resp = self.encrypt_sign_send(M)
+        resp = json.loads(resp.decode('utf-8'))
+        if self.verify_signature(resp["discount"], resp["sig"], self.vendor_pk):
+            print("discount amt: ", resp)
+        else:
+            raise ValueError
 
     def encrypt_sign_send(self, m):
         m["store_id"] = self.id
@@ -76,7 +98,7 @@ class Store:
 
         self.connect_to_vendor()
 
-        data = json.dumps((enc.decode('utf-8'), sig))
+        data = json.dumps({"enc":enc.decode('utf-8'), "sig":sig})
         resp = self.send_and_recieve(data.encode('utf-8'))
 
         return resp
@@ -93,11 +115,11 @@ class Store:
         signature = self.private_key.sign(hash, '')
         return signature
 
-    def verify_signature(self, message, signature):
+    def verify_signature(self, message, signature, public_key):
         if isinstance(message, str):
             message = message.encode('utf-8')
         hash = SHA256.new(message).digest()
-        return self.public_key.verify(hash, signature)
+        return public_key.verify(hash, signature)
 
     def encrypt(self,m):
         raw = pad(m)

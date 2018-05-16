@@ -16,3 +16,6 @@ s.make_purchase(*resp, [("apples",1)])
 
 resp = c.get("")
 s.check_balance(*resp)
+
+resp = c.get("spend_num_points")
+s.spend_points(*resp)
