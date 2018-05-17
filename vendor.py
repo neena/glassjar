@@ -164,7 +164,7 @@ class Vendor:
 		cipher = AES.new(self.store_key, AES.MODE_CBC, iv )
 		return unpad(cipher.decrypt( enc[16:] ))
 
-	def make_results_differentially_private(self, results, epsilon=2):
+	def make_results_differentially_private(self, results, epsilon=0.693):
 		dp_results = []
 		la = len(results)/(len(self.customers)*epsilon)
 		for result in results:

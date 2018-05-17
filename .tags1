@@ -41,5 +41,5 @@ sign	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def sign(self, mes
 verify_signature	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def verify_signature(self, message, signature, public_key):$/;"	member	line:148	class:Vendor
 encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(self,m):$/;"	member	line:154	class:Vendor
 decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:161	class:Vendor
-make_results_differentially_private	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def make_results_differentially_private(self, results, epsilon=2):$/;"	member	line:167	class:Vendor
+make_results_differentially_private	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def make_results_differentially_private(self, results, epsilon=0.693):$/;"	member	line:167	class:Vendor
 get_dp_counting_queries	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def get_dp_counting_queries(self, queries):$/;"	member	line:174	class:Vendor
