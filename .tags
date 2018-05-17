@@ -1,13 +1,3 @@
-Customer	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from customer import Customer$/;"	namespace	line:1
-Store	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from store import Store$/;"	namespace	line:2
-Vendor	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from vendor import Vendor$/;"	namespace	line:3
-sleep	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from time import sleep$/;"	namespace	line:4
-c	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^c = Customer()$/;"	variable	line:6
-v	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^v = Vendor()$/;"	variable	line:7
-s	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^s = Store()$/;"	variable	line:9
-resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("send_history")$/;"	variable	line:14
-resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("")$/;"	variable	line:17
-resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("spend_num_points")$/;"	variable	line:20
 secrets	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^import secrets$/;"	namespace	line:1
 SHA256	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from Crypto.Hash import SHA256$/;"	namespace	line:2
 RSA	/Users/neena/Projects/classes/6857/glassjar/customer.py	/^from Crypto.PublicKey import RSA$/;"	namespace	line:3
@@ -93,3 +83,13 @@ encrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def encrypt(sel
 decrypt	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def decrypt(self,enc):$/;"	member	line:161	class:Vendor
 make_results_differentially_private	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def make_results_differentially_private(self, results, epsilon=0.693):$/;"	member	line:167	class:Vendor
 get_dp_counting_queries	/Users/neena/Projects/classes/6857/glassjar/vendor.py	/^	def get_dp_counting_queries(self, queries):$/;"	member	line:174	class:Vendor
+Customer	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from customer import Customer$/;"	namespace	line:1
+Store	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from store import Store$/;"	namespace	line:2
+Vendor	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from vendor import Vendor$/;"	namespace	line:3
+sleep	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^from time import sleep$/;"	namespace	line:4
+c	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^c = Customer()$/;"	variable	line:6
+v	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^v = Vendor()$/;"	variable	line:7
+s	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^s = Store()$/;"	variable	line:9
+resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("send_history")$/;"	variable	line:14
+resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("")$/;"	variable	line:17
+resp	/Users/neena/Projects/classes/6857/glassjar/tester.py	/^resp = c.get("spend_num_points")$/;"	variable	line:20
